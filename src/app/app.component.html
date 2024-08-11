@@ -1,0 +1,314 @@
+<style>
+  * {
+    margin: 0 10px;
+  }
+</style>
+<!-- 
+<h1>Welcome {{fname}}</h1>
+<h3>Salary {{salary | currency}}</h3>
+
+<ng-container *ngIf="tymVar < 12; else aft">
+  <p>Good Morning</p>
+</ng-container>
+
+<ng-template #aft>
+  <ng-container *ngIf="tymVar < 16; else eve">
+    <p>Good Afternoon</p>
+  </ng-container>
+</ng-template>
+
+<ng-template #eve>
+  <p>Good Evening</p>
+</ng-template>
+
+
+<h3>Must Visit Places</h3>
+
+<div>
+  <span *ngFor = "let ItmVar of tripAryVar | slice:2:5; let IndexVar = index">
+    <li *ngIf = "!ItmVar.includes('Beach')">
+      {{IndexVar + 1}} {{ItmVar}}
+    </li>
+  </span>
+</div>
+
+<p>Sorted by Cost</p>
+<table border="1px solid black">
+  <tr>
+    <th>Name</th>
+    <th>Product</th>
+    <th>Cost</th>
+  </tr>
+
+  <tr *ngFor = "let item of prodAryVar.sort(sortByCost)">
+    <td>{{item.NamVak}}</td>
+    <td>{{item.Prod}}</td>
+    <td>{{item.Cost}}</td>
+  </tr>
+</table>
+
+
+<p>Filtered by cost < 1000000</p>
+<table border="1px solid black">
+  <tr>
+    <th>Name</th>
+    <th>Product</th>
+    <th>Cost</th>
+  </tr>
+
+  <tr *ngFor = "let item of filterCost()">
+    <td>{{item.NamVak}}</td>
+    <td>{{item.Prod}}</td>
+    <td>{{item.Cost}}</td>
+  </tr>
+</table>
+
+<p>Total Cost</p>
+
+<table border="1px solid black">
+  <tr>
+    <th>Name</th>
+    <th>Product</th>
+    <th>Cost</th>
+  </tr>
+
+  <tr *ngFor = "let item of prodAryVar">
+    <td>{{item.NamVak}}</td>
+    <td>{{item.Prod}}</td>
+    <td>₹ {{abrCost(item.Cost)}}</td>
+  </tr>
+
+  <tr>
+    <th colspan="2">Total</th>
+    <td>₹ {{abrCost(totalCost())}}</td>
+  </tr>
+</table>
+
+<p><span>Place to visit during {{seasonVar}}</span>
+  <ng-container [ngSwitch]="seasonVar">
+    <span *ngSwitchCase="'Summer'"> Goa</span>
+    <span *ngSwitchCase="'Winter'"> Ooty</span>
+    <span *ngSwitchCase="'Rainy'"> Kerala</span>
+    <span *ngSwitchCase="'Spring'"> Manali</span>
+  </ng-container></p>
+
+<button (click)="NamBtnClkFnc()">Click here</button>
+
+
+<div class="DspFlxCls">
+  <div class="BoderCls" 
+  *ngFor="let stsItmVar of stsAtmAry"
+  (dragover)="DrgOvrFnc($event)"
+  (drop)="DrpStpFuc($event, stsItmVar)">
+   
+  <h1>{{stsItmVar}}</h1>
+   
+  <div *ngFor="let tskItmVar of GetTskFltFuc(stsItmVar)"
+  class=""
+  draggable="true"
+  (dragstart)="DrgStrFnc($event, tskItmVar)">
+  <h2>{{tskItmVar.tskName}}</h2>
+  <p>{{tskItmVar.detail}}</p>
+    
+  </div>
+</div>
+
+<div [ngClass]="StsVar? 'greenThemeCls' : 'purpleThemeCls'">
+  <h1>ng class with ternary code</h1>
+  <button (click)="chgThmOnBtnClkFnc()">Change Theme</button>
+</div>
+
+
+<div  [ngStyle]="{'background-color': currentColor }">
+  <h1>ng class with ternary code</h1>
+</div> -->
+
+<!-- <form action="">
+  <p>
+    <label>
+        <input id="nameVar" type="text" 
+        [(ngModel)] = "FormIptVar.NamIptVak" 
+        placeholder="Enter your name" 
+        name = "nameVar" #nameVar="ngModel"
+        minlength="3"
+        required> 
+      
+        <div *ngIf="nameVar.invalid && (nameVar.touched || nameVar.dirty)" class="errMsg">
+          <span *ngIf="nameVar.errors?.required">Name is required</span>
+          <span *ngIf="nameVar.errors?.minlength">Name should have atleast 3 letters</span>
+        </div>
+    </label>
+  </p>
+  
+  <p>
+    <label>
+      <input id="mobVar" type="number" placeholder="Enter your mobile no" 
+      [(ngModel)] = "FormIptVar.MblIptVak" name="mobVar" 
+      #mobVar = ngModel 
+      pattern="[6-9][0-9]{9}"
+      required>
+
+      <div *ngIf="mobVar.invalid && (mobVar.touched || mobVar.dirty)" class="errMsg">
+        <span *ngIf="mobVar.errors?.required">Mobile no. is required</span>
+        <span *ngIf="mobVar.errors?.pattern">Enter valid phone number </span>
+      </div>
+    </label>
+  </p>
+    
+  
+  <p>    
+    <label>
+      <input type="email" placeholder="Enter your email" 
+      [(ngModel)] = "FormIptVar.MylIptVak" 
+      name="emailVar" #emailVar="ngModel" required email>
+
+      <div *ngIf="emailVar.invalid && (emailVar.touched || emailVar.dirty)" class="errMsg">
+        <span *ngIf="emailVar.errors?.required">Email is required</span>
+        <span *ngIf="emailVar.errors?.email">Enter valid email </span>
+      </div>
+    </label>
+  </p>
+
+    
+    
+  <p><button>Add</button></p>
+</form>
+
+
+
+ <form name="todoForm" #todoForm="ngForm">
+  <p>
+    <label>
+        <input id="nameVar" type="text" 
+        [(ngModel)] = "FormIptVar.NamIptVak" 
+        placeholder="Enter To do " 
+        name = "nameVar" #nameVar="ngModel"
+        minlength="3" maxlength="20" required>
+
+        <div *ngIf="nameVar.invalid && (nameVar.touched || nameVar.dirty)" class="errMsg">
+          <span *ngIf="nameVar.errors?.required">Todo is required</span>
+          <span *ngIf="nameVar.errors?.minlength">Todo List should have atleast 3 letters</span>          
+          <span *ngIf="nameVar.errors?.maxlength">Todo List can have max of 20 letters</span>
+        </div>
+
+    </label>
+  </p>
+  
+  <p><button type="button" (click) = "addTodo(todoForm)" 
+    [(ngModel)] = "AddBtn" >{{AddBtn}}</button></p>
+  
+  <h3>To Do List</h3>
+
+  <ul>
+    <li *ngFor="let item of TodoAryVar; let i = index" >{{item}} 
+      <button (click)="editTodo(i)">Edit</button>
+      <button (click)="delTodo(i)">Del</button>
+      <br><br>
+    </li>
+  </ul>
+  
+
+ </form> 
+
+ <html>
+  <table border="1">
+    <tr>
+      <th>Name</th>
+      <th>Prod</th>
+      <th>Cost</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let ItmVar of verifyTable; let i = index">
+      <td>{{ItmVar.NamVak}}</td>
+      <td>{{ItmVar.prod}}</td>
+      <td>{{ItmVar.cost}}</td>
+      <td>
+        <button (click)="editRow(i)">Edit</button>
+        <button (click)="deleteRow(i)">Delete</button>
+      </td>
+    </tr>
+  </table>
+   
+  <br><br>
+  <form name="editForm">
+    <label>
+      Name:
+      <input type="text" name="NamIptVak" [(ngModel)]="NamFomVar.NamIptVak" required>
+    </label>
+    <br><br>
+    <label>
+      Prod:
+      <input type="text" name="prod" [(ngModel)]="NamFomVar.prod" required>
+    </label>
+    <br><br>
+    <label>
+      Cost:
+      <input type="number" name="cost" [(ngModel)]="NamFomVar.cost" required>
+    </label>
+    <br><br>
+    <button (click)="UptBtnFnc()" *ngIf="EdtIdxVar >= 0">Update</button>
+    <button (click)="addRow()" *ngIf="EdtIdxVar < 0">Add</button>
+  </form>
+   
+</html> -->
+
+<!-- <form name="NamFomVav" #NamFomVav="ngForm">
+  <h3>Add product</h3>
+  <label>
+    Name:
+    <input type="text" name="Name" [(ngModel)]="NamFomVar.NamCol" name="NamFomVav" #NamFomVav="ngModel" required>
+  </label>
+  <br><br>
+  <label>
+    Prod:
+    <input type="text" name="prod" [(ngModel)]="NamFomVar.ProdCol" name="PrdFomVav" #PrdFomVav="ngModel" required>
+  </label>
+  <br><br>
+  <label>
+    Cost:
+    <input type="number" name="cost" [(ngModel)]="NamFomVar.CostCol" name="CstFomVav" #CstFomVav="ngModel" required>
+  </label>
+  <br><br>
+  <button (click)="AddProdFnc(NamFomVav)" *ngIf="EdtIdxVar < 0">Add</button>
+  <div *ngFor="let prod of prodAryVar; let i = index">
+ 
+    <button *ngIf="EdtIdxVar === i" (click)="UptProdFnc(i)">Update</button>
+   
+  </div>
+</form>
+
+<br><br>
+
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Prod</th>
+    <th>Cost</th>
+    <th colspan="2"></th>
+  </tr>
+  <tr *ngFor="let ItmVar of prodAryVar; let i = index">
+    <td>{{ItmVar.NamCol}}</td>
+    <td>{{ItmVar.CostCol}}</td>
+    <td>{{ItmVar.ProdCol }}</td>
+    <td><button (click)="editRow(i)" >Edit</button></td>
+    <td><button (click)="deleteRow(i, ItmVar.UidCol)" >Delete</button></td>
+
+  </tr>
+</table>
+
+ -->
+
+<header>
+    <nav>
+      <a routerLink="/" routerLinkActive="active">Home</a>
+      <a routerLink="/News" routerLinkActive="active">News</a>
+      <a routerLink="/About" routerLinkActive="active">About</a>
+      <a routerLink="/Contact" routerLinkActive="active">Contact</a>
+    </nav>
+</header>
+
+ <router-outlet></router-outlet>
+
+ <footer>
+  <!-- <p>&copy; 2024 Ralweena Rishal Lobo</p> -->
+ </footer>

@@ -1,0 +1,33 @@
+<h1 change-color>Hello</h1>
+<p><button (click)="GotoPageFnc()">Goto User</button>
+    <button (click)="NamServices.loginFnc()" >Login</button>
+    </p>
+
+ 
+<form>
+    <h2>Selected News: {{selectedNews}}</h2>
+    <input placeholder="comment"
+        [(ngModel)]="commentVar"
+        name="commentVav"
+        #commentVav="ngModel">
+        <br><br>
+    <button (click)="addCommentFnc(commentVav)">Add</button>
+</form>
+<news-page title="Education"
+    detail="Angular is tot in school"
+    [commentAry]="commentAryVar['Education']"
+    (SelectMe)="SelectMeFnc($event)"
+    ></news-page>
+
+<news-page title="Sports"
+    detail="Ee sala Cup Namdhe"
+    [commentAry]="commentAryVar['Sports']"
+    (SelectMe)="SelectMeFnc($event)"
+    ></news-page>
+    
+<news-page title="Politics"
+    [commentAry]="commentAryVar['Politics']"
+    detail="Crow sat on DK Shivkumar Car"
+    (SelectMe)="SelectMeFnc($event)"
+    ></news-page>
+ 
